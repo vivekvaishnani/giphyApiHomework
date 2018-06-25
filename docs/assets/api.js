@@ -76,7 +76,7 @@ function displayPlayerInfo() {
                 playerDiv.addClass("playerResult");
                 var img = $("<img>");
                 img.addClass("imgGif");
-                // img.addClass("col-lg-3");
+                img.addClass("col-lg-12");
                 
 
                 // ===========
