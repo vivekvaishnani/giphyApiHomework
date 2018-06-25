@@ -110,10 +110,10 @@ function displayPlayerInfo() {
 
 
                 var imgSrc = source[i].images.original.url;
-                var dataStill = source[i].images.fixed_height_still.url;
+                var dataStill = source[i].images.original_still.url;
                 img.attr("data-still", dataStill);
                 console.log("Data Still added for image # " + i);
-                var dataPlayer = source[i].images.fixed_height.url;
+                var dataPlayer = source[i].images.original.url;
                 img.attr("data-player", dataPlayer);
                 var dataState = "still";
                 img.attr("data-state", dataState);
@@ -153,7 +153,24 @@ function displayPlayerInfo() {
     $(document).on("click", ".player", displayPlayerInfo);
     
     
-    // $(document).on("click", ".imgGif", pauseAndPlay);
+    $(document).on("click", ".imgGif", pauseAndPlay);
 
 
         
+    function pauseAndPlay() {
+        var state = $("img").attr("data-state");
+         console.log("function pauseAndPlay Called");
+        if (state === "still")  {
+          console.log($(this));
+          console.log("function Still Called");
+          var dataPlayer = $(this).attr("data-player");
+          console.log(dataPlayer+" is data-player value");
+          $(this).attr("src", dataPlayer);
+          $(this).attr("data-state", "player");
+        }
+        else if (state === "player")  {
+           $(this).attr("src", $(this).attr("data-still"));
+          $(this).attr("data-state", "still");
+          console.log("function player Called");
+        }
+      }
