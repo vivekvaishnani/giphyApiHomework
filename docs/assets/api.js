@@ -158,19 +158,23 @@ function displayPlayerInfo() {
 
         
     function pauseAndPlay() {
-        var state = $("img").attr("data-state");
+        var state = $(this).attr("data-state");
          console.log("function pauseAndPlay Called");
         if (state === "still")  {
-          console.log($(this));
-          console.log("function Still Called");
-          var dataPlayer = $(this).attr("data-player");
-          console.log(dataPlayer+" is data-player value");
-          $(this).attr("src", dataPlayer);
+         
+        var dataPlayer = $(this).attr("data-player");
+         $(this).attr("src", dataPlayer);
           $(this).attr("data-state", "player");
+          
+          console.log(dataPlayer+" is data-player value");
+          console.log("function Still Called");
         }
         else if (state === "player")  {
-           $(this).attr("src", $(this).attr("data-still"));
+            
+            var dataStill = $(this).attr("data-still")
+           $(this).attr("src", dataStill);
           $(this).attr("data-state", "still");
+          
           console.log("function player Called");
         }
       }
